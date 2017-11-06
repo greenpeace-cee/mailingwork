@@ -45,7 +45,7 @@ class Config {
       if (isset($json->error) && $json->error === 1) {
         throw new ApiException($json->message, $json->error);
       }
-      if (isset($json->error)) {
+      if (isset($json->error) && $json->error !== 0) {
         return $response->withBody(\GuzzleHttp\Psr7\stream_for($body));
       }
       $json = json_encode($json->result);

@@ -37,6 +37,9 @@ class Client {
   }
 
   private function arrayFilter(&$array) {
+    if (!is_array($array)) {
+      return;
+    }
     foreach ( $array as $key => $item ) {
       is_array($item) && $array[$key] = $this->arrayFilter($item);
       if (empty ($array [$key])) {
