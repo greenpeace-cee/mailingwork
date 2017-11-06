@@ -19,9 +19,21 @@ class Client {
   }
 
   public function request($url, $params = FALSE) {
+    $this->arrayFilter($params);
+    print_r($params);
     return $this->decodeBody($this->client->post($url,[
       'form_params' => ($params) ? $params : []
     ]));
+  }
+
+  private function arrayFilter(&$array) {
+    foreach ( $array as $key => $item ) {
+      is_array($item) && $array[$key] = $this->arrayFilter($item);
+      if (empty ($array [$key])) {
+        unset ($array[$key]);
+      }
+    }
+    return $array;
   }
 
   protected function decodeBody(ResponseInterface $response) {
