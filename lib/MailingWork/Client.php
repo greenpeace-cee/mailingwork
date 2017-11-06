@@ -20,7 +20,6 @@ class Client {
 
   public function request($url, $params = FALSE) {
     $this->arrayFilter($params);
-    print_r($params);
     return $this->decodeBody($this->client->post($url,[
       'form_params' => ($params) ? $params : []
     ]));
