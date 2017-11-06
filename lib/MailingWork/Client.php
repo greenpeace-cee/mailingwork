@@ -5,6 +5,7 @@ namespace bconnect\MailingWork;
 use bconnect\MailingWork\Config\Config;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as HttpClient;
+use Psr\Http\Message\ResponseInterface;
 
 class Client {
 
@@ -17,12 +18,25 @@ class Client {
     $this->config = $config;
   }
 
-  public function request($url, $params = []) {
-    $response = $this->client->post($url,[
-      'form_params' => $params
-    ]);
-    $json = json_decode($response->getBody());
-    return $json;
+  public function request($url, $params = FALSE) {
+    return $this->decodeBody($this->client->post($url,[
+      'form_params' => ($params) ? $params : []
+    ]));
+  }
+
+  protected function decodeBody(ResponseInterface $response) {
+    return json_decode($response->getBody()->getContents());
+    // $body = $response->getBody()->getContents();
+    // $json = new \stdClass();
+    // if (empty($body)) {
+    //   return $json;
+    // }
+    // try {
+
+    //   $json = json_decode($body);
+    // } catch (\Exception $ex) {
+    // }
+    // return $json;
   }
 
   protected function getImplementingClasses($name ) {

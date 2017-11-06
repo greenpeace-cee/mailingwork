@@ -33,23 +33,21 @@ class Config {
       return $newRequest;
     }),'add_auth');
 
-    // $this->setMiddleware(Middleware::mapResponse(function (ResponseInterface $response) {
-    // }),'add_exception_handling');
-
     $this->setMiddleware(Middleware::mapResponse(function (ResponseInterface $response) {
-      $json = $response->getBody()->getContents();
-      if (empty($json)) {
+      $body = $response->getBody();
+      if (empty($body)) {
         return $response;
       }
       try {
-        $json = json_decode($json);
+        $json = json_decode($body);
       } catch (\Exception $ex) {
         return $response;
       }
       if (isset($json->error) && $json->error !== 0) {
         throw new ApiException($json->message, $json->error);
       }
-      return $response;
+      $json = json_encode($json->result);
+      return $response->withBody(\GuzzleHttp\Psr7\stream_for($json));
     }),'add_error_handling');
   }
 
