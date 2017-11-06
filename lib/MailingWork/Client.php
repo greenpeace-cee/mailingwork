@@ -20,9 +20,20 @@ class Client {
 
   public function request($url, $params = FALSE) {
     $this->arrayFilter($params);
-    return $this->decodeBody($this->client->post($url,[
+    $response = $this->client->post($url,[
       'form_params' => ($params) ? $params : []
-    ]));
+    ]);
+    $json = $this->decodeBody($response);
+    if ($json->error) {
+      $debug = debug_backtrace()[1];
+      if (!$debug['class']) {
+        throw new ApiException('Unknown error occurred');
+      }
+      $class = $debug['class'];
+      $error = $class::getErrorCode($debug['class'], $debug['function'], $json->error);
+      throw new ApiException($error[0], $error[1]);
+    }
+    return $json;
   }
 
   private function arrayFilter(&$array) {

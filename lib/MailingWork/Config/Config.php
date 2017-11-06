@@ -21,7 +21,6 @@ class Config {
         // pass the request on through the middleware stack as-is
         return $request;
       }
-
       // add the form-params to all post requests.
       $newRequest = new Request(
           $request->getMethod(),
@@ -34,7 +33,7 @@ class Config {
     }),'add_auth');
 
     $this->setMiddleware(Middleware::mapResponse(function (ResponseInterface $response) {
-      $body = $response->getBody();
+      $body = $response->getBody()->getContents();
       if (empty($body)) {
         return $response;
       }
@@ -43,8 +42,11 @@ class Config {
       } catch (\Exception $ex) {
         return $response;
       }
-      if (isset($json->error) && $json->error !== 0) {
+      if (isset($json->error) && $json->error === 1) {
         throw new ApiException($json->message, $json->error);
+      }
+      if (isset($json->error)) {
+        return $response->withBody(\GuzzleHttp\Psr7\stream_for($body));
       }
       $json = json_encode($json->result);
       return $response->withBody(\GuzzleHttp\Psr7\stream_for($json));

@@ -12,18 +12,18 @@ class RecipientClient extends BaseApiClient {
   }
 
   public function getRecipientListsById($id) {
-    return $this->client->request('GetRecipientListsById', ['recipientId' => $id]);
+    return $this->client->request('getRecipientListsById', ['recipientId' => $id]);
   }
 
   public function createRecipient($listId, $fields) {
-    return $this->client->request('GetRecipientListsById', [
+    return $this->client->request('getRecipientListsById', [
       'listId' => $listId,
       'fields' => ($fields) ? json_encode($fields) : ''
     ]);
   }
 
   public function deleteRecipientById($id) {
-    return $this->client->request('DeleteRecipientById', [
+    return $this->client->request('deleteRecipientById', [
       'recipientId' => $id
     ]);
   }
@@ -99,6 +99,32 @@ class RecipientClient extends BaseApiClient {
       'fieldId' => $fieldId,
       'value' => $value
     ]);
+  }
+
+
+  public static function getErrorCodes() {
+    return [
+      'createRecipient' => [
+        -1 => 'Unkown error',
+        2 => 'No list provided',
+        3 => 'No fields provided',
+        4 => 'Invalid list',
+        5 => 'Invalid field'
+      ],
+      'getRecipientListsById' => [
+        2 => 'No recipientId parameter provided',
+        3 => 'Recipient not exists'
+      ],
+      'getRecipientIdsByEmail' => [
+        2 => 'No email provided',
+        3 => 'Email field does not exist',
+        4 => 'No match found'
+      ],
+      'getRecipientById' => [
+        2 => 'Missing recipientId parameter',
+        3 => 'Recipient not found'
+      ]
+    ];
   }
 
 }

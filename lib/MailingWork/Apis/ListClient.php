@@ -128,4 +128,11 @@ class ListClient extends BaseApiClient {
     ]);
   }
 
+
+  public static function getErrorCodes() {
+    return [
+
+    ];
+  }
+
 }

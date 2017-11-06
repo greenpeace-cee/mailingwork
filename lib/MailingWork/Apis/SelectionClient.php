@@ -15,4 +15,10 @@ use bconnect\MailingWork\BaseApiClient;
 class SelectionClient extends BaseApiClient {
 
 
+  public static function getErrorCodes() {
+    return [
+
+    ];
+  }
+
 }
