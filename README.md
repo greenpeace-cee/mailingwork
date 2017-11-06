@@ -1,11 +1,5 @@
 # mailingwork
 
-## Clients
-
-* [ListClient](/doc/ListClient.md)
-* [RecipientClient](/doc/RecipientClient.md)
-* [SelectionClient](/doc/SelectionClient.md)
-* [TargetGroupClient](/doc/TargetGroupClient.md)
 
 
 ## Installation
@@ -26,3 +20,10 @@ try {
   print "Error ocurred";
 }
 ```
+
+## Clients
+
+* [ListClient](/doc/ListClient.md)
+* [RecipientClient](/doc/RecipientClient.md)
+* [SelectionClient](/doc/SelectionClient.md)
+* [TargetGroupClient](/doc/TargetGroupClient.md)
