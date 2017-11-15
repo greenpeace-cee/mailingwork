@@ -69,7 +69,7 @@ class Config {
   }
 
   public function setBaseUrl($baseUrl) {
-    $this->baseUrl = $baseUrk;
+    $this->baseUrl = $baseUrl;
   }
 
   public function getAuthentication() {
