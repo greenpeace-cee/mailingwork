@@ -26,9 +26,9 @@ class ListClient extends BaseApiClient {
   /**
    * Create a new list.
    *
-   * @param string $name List name.
-   * @param string $description Set a description for a list.
-   * @param int $folderId Set folder for the new created list.
+   * @param string  $name List name.
+   * @param string  $description Set a description for a list.
+   * @param integer $folderId Set folder for the new created list.
    *
    * @return int new list id.
    */
@@ -123,9 +123,11 @@ class ListClient extends BaseApiClient {
    * @return array status.
    */
   public function getOptStatusByListId($listId) {
-    return $this->client->request('getOptStatusByListId', [
-      'listId' => $listId
-    ]);
+    return $this->client->request(
+      'getOptStatusByListId', [
+        'listId' => $listId
+      ]
+    );
   }
 
 

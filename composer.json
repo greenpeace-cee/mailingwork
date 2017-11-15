@@ -9,7 +9,7 @@
     "guzzlehttp/psr7": "^1.4.0"
   },
   "autoload": {
-    "psr-4": { "bconnect\\MailingWork\\": "lib/MailingWork/" }
+    "psr-4": { "bconnect\\": "lib/" }
   },
   "autoload-dev": {
     "psr-4": { "bconnect\\MailingWork\\Tests\\": "test/MailingWork/Tests/"}
