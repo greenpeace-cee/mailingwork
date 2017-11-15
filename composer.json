@@ -1,6 +1,13 @@
 {
-  "name": "bconnect/mailingwork",
+  "name": "b-connect/mailingwork",
+  "authors": [
+    {
+      "name": "Erik Seifert",
+      "email": "erik.seifert@b-connect.de"
+    }
+  ],
   "description": "Integration for mailingwork api.",
+  "homepage": "http://b-connect.de/",
   "type": "library",
   "keywords": ["api", "newsletter", "mailingwork", "bconnect"],
   "require": {
@@ -10,17 +17,7 @@
   },
   "autoload": {
     "psr-4": { "bconnect\\MailingWork\\": "lib/MailingWork" }
-  },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Erik Seifert",
-      "email": "erik.seifert@b-connect.de"
-    }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require-dev": {
+  },  "require-dev": {
     "phpunit/phpunit": "^6.4"
   }
 }
