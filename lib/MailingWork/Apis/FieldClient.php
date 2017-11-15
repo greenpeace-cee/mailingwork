@@ -43,7 +43,7 @@ class FieldClient extends BaseApiClient {
     $format = FALSE,
     $default = FALSE
   ) {
-    return $this->client->request('createList', [
+    return $this->client->request('createField', [
       'name' => $name,
       'type' => $type,
       'advanced' => [
@@ -66,7 +66,7 @@ class FieldClient extends BaseApiClient {
     $options = FALSE,
     $format = FALSE
   ) {
-    return $this->client->request('createList', [
+    return $this->client->request('updateFieldById', [
       'id' => $id,
       'advanced' => [
         'name' => ($name) ? $name : '',
