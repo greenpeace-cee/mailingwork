@@ -83,12 +83,15 @@ class Client {
   }
 
 
-  public static function getClient($username, $password) {
+  public static function getClient($username, $password, $url = FALSE) {
     $config = new Config();
     $config->setAuthentication($username, $password);
     $stack = HandlerStack::create();
     foreach ($config->middleware() as $name => $middleware) {
       $stack->push($middleware, $name);
+    }
+    if ($url !== FALSE) {
+      $config->setBaseUrl($url);
     }
     $client = new HttpClient([
       'base_uri' => $config->getBaseUrl(),
