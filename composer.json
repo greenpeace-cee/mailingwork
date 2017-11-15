@@ -9,13 +9,7 @@
     "guzzlehttp/psr7": "^1.4.0"
   },
   "autoload": {
-    "psr-4": { "bconnect\\": "lib/" },
-    "psr-0": {
-      "bconnect\\": "lib/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": { "bconnect\\MailingWork\\Tests\\": "test/MailingWork/Tests/"}
+    "psr-4": { "bconnect\\MailingWork\\": "lib/MailingWork" }
   },
   "license": "MIT",
   "authors": [
