@@ -24,7 +24,7 @@ class Client {
       'form_params' => ($params) ? $params : []
     ]);
     $json = $this->decodeBody($response);
-    if ($json->error) {
+    if (isset($json->error)) {
       $debug = debug_backtrace()[1];
       if (!$debug['class']) {
         throw new ApiException('Unknown error occurred');
