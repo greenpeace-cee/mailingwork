@@ -51,17 +51,6 @@ class Client {
 
   protected function decodeBody(ResponseInterface $response) {
     return json_decode($response->getBody()->getContents());
-    // $body = $response->getBody()->getContents();
-    // $json = new \stdClass();
-    // if (empty($body)) {
-    //   return $json;
-    // }
-    // try {
-
-    //   $json = json_decode($body);
-    // } catch (\Exception $ex) {
-    // }
-    // return $json;
   }
 
   protected function getImplementingClasses($name ) {
