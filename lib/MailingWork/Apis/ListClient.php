@@ -36,8 +36,8 @@ class ListClient extends BaseApiClient {
     return $this->client->request('createList', [
       'name' => $name,
       'advanced' => [
-        'folderid' => ($description) ? $description : '',
-        'description' => ($folderId) ? $description : NULL
+        'folderid' => ($folderId) ? $folderId : '',
+        'description' => ($description) ? $description : NULL
       ]
     ]);
   }
@@ -57,8 +57,8 @@ class ListClient extends BaseApiClient {
       'listId' => $listId,
       'name' => $name,
       'advanced' => [
-        'folderid' => ($description) ? $description : '',
-        'description' => ($folderId) ? $description : NULL
+        'folderid' => ($folderId) ? $folderId : '',
+        'description' => ($description) ? $description : NULL
       ]
     ]);
   }
