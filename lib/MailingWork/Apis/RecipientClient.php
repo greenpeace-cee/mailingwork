@@ -101,6 +101,18 @@ class RecipientClient extends BaseApiClient {
     ]);
   }
 
+  public function getRecipientsByEmailId($emailId, $startDate = NULL, $endDate = NULL, $start = NULL, $limit = NULL) {
+    return $this->client->request('getRecipientsByEmailId', [
+      'emailId' => $emailId,
+      'advanced' => [
+        'startDate' => $startDate,
+        'endDate' => $endDate,
+        'start' => $start,
+        'limit' => $limit,
+      ]
+    ]);
+  }
+
 
   public static function getErrorCodes() {
     return [
@@ -123,6 +135,9 @@ class RecipientClient extends BaseApiClient {
       'getRecipientById' => [
         2 => 'Missing recipientId parameter',
         3 => 'Recipient not found'
+      ],
+      'getRecipientsByEmailId' => [
+        2 => 'no valid email id provided',
       ]
     ];
   }

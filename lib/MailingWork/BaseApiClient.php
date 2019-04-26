@@ -22,7 +22,7 @@ abstract class BaseApiClient {
     if (isset($class::getErrorCodes()[$call][$number])) {
       return [$class::getErrorCodes()[$call][$number], $number];
     }
-    return ['Unknown error', -1];
+    return ["Unknown error code {$number} in {$class}::{$call}", -1];
   }
 
 }
