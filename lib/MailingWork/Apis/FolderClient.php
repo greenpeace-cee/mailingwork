@@ -10,7 +10,7 @@ use bconnect\MailingWork\Client;
 use bconnect\MailingWork\BaseApiClient;
 
 /**
- * This class implements all list management functions.
+ * This class implements all folder management functions.
  */
 class FolderClient extends BaseApiClient {
 
