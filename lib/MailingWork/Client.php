@@ -72,10 +72,10 @@ class Client {
   }
 
 
-  public static function getClient($username, $password, $url = FALSE) {
+  public static function getClient($username, $password, $url = FALSE, $handler = NULL) {
     $config = new Config();
     $config->setAuthentication($username, $password);
-    $stack = HandlerStack::create();
+    $stack = HandlerStack::create($handler);
     foreach ($config->middleware() as $name => $middleware) {
       $stack->push($middleware, $name);
     }
