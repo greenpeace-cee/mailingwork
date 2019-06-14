@@ -37,10 +37,9 @@ class Config {
       if (empty($body)) {
         return $response;
       }
-      try {
-        $json = json_decode($body);
-      } catch (\Exception $ex) {
-        return $response;
+      $json = json_decode($body);
+      if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new ApiException("Invalid non-JSON response: {$body}");
       }
       if (isset($json->error) && $json->error === 1) {
         throw new ApiException($json->message, $json->error);
