@@ -10,7 +10,7 @@ use bconnect\MailingWork\ApiException;
 
 class Config {
 
-  private $baseUrl = 'https://login.mailingwork.de/webservice/webservice/json/';
+  private $baseUrl = 'https://webservice.mailingwork.de/webservice/webservice/json/';
   private $authentication;
   private $useHttpErrors = true;
   private $middleware = [];
