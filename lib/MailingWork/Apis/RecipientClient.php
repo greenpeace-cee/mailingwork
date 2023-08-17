@@ -16,9 +16,9 @@ class RecipientClient extends BaseApiClient {
   }
 
   public function createRecipient($listId, $fields) {
-    return $this->client->request('getRecipientListsById', [
+    return $this->client->request('createRecipient', [
       'listId' => $listId,
-      'fields' => ($fields) ? json_encode($fields) : ''
+      'fields' => $fields,
     ]);
   }
 
