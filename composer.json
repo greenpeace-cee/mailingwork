@@ -12,8 +12,8 @@
   "keywords": ["api", "newsletter", "mailingwork", "bconnect"],
   "require": {
     "php": ">=5.6",
-    "guzzlehttp/guzzle": "^6.3",
-    "guzzlehttp/psr7": "^1.4.0"
+    "guzzlehttp/guzzle": "^7.3",
+    "guzzlehttp/psr7": "^2.4.5"
   },
   "autoload": {
     "psr-4": { "bconnect\\MailingWork\\": "lib/MailingWork" }
